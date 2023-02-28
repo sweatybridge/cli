@@ -80,7 +80,7 @@ jobs:
         with:
           node-version: "16.x"
           registry-url: "https://registry.npmjs.org"
-      - run: npm version ${{ needs.release.outputs.new-release-version }}
+      - run: npm --git-tag-version=false version ${{ needs.release.outputs.new-release-version }}
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
